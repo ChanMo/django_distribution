@@ -52,6 +52,15 @@ class App(models.Model):
 
         return v.number
 
+    def get_android_version_content(self):
+        v = self.get_android()
+
+        if not v:
+            return None
+
+        return v.content
+
+
     def get_ios(self):
         return self.version_set.filter(platform='ios').first()
 
@@ -81,6 +90,15 @@ class App(models.Model):
             return 0
 
         return v.number
+
+    def get_ios_version_content(self):
+        v = self.get_ios()
+
+        if not v:
+            return None
+
+        return v.content
+
 
 class Version(models.Model):
     PLATFORM_CHOICES = (
